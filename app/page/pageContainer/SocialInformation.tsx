@@ -3,14 +3,10 @@ import { Link } from '@nextui-org/react';
 const SocialInformation = () => {
   return (
     <div className="text-lg font-light">
-      <p className="pb-5">
-        A little project to share my current FIP Radio groove and a bit about
-        myself.
-      </p>
+      <p>Sharing my current FIP Radio groove and a bit about myself.</p>
       <p>
-        I am a hands-on software engineer with strengths in turning proof of
-        concepts into stable products and challenges into successes, while
-        fostering teamwork.
+        I am a software engineer who loves taking projects from idea to launch,
+        and building strong teams along the way.
       </p>
       <p className="pb-1">Find me on: </p>
       <span className="flex items-center content-center">

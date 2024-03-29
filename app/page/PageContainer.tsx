@@ -77,7 +77,9 @@ const PageContainer = ({ webRadios }: { webRadios: WebRadio[] }) => {
           <ModalContent>
             {(onClose) => (
               <>
-                <ModalHeader className="flex flex-col gap-1">👋</ModalHeader>
+                <ModalHeader className="flex flex-col gap-1">
+                  Let's jam!
+                </ModalHeader>
                 <ModalBody>
                   <SocialInformation />
                 </ModalBody>

@@ -1,7 +1,11 @@
 'use client';
 import { Link } from '@nextui-org/react';
 
-const SocialInformation = ({ fallbackMode }: { fallbackMode?: boolean }) => {
+type SocialInformationProps = {
+  fallbackMode?: boolean;
+};
+
+const SocialInformation = ({ fallbackMode }: SocialInformationProps) => {
   return (
     <div className="text-lg font-light">
       <p>

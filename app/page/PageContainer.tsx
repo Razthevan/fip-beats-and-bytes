@@ -20,7 +20,9 @@ import CurrentlyPlayingInformation from './pageContainer/CurrentlyPlayingInforma
 
 import { StationsEnum, WebRadio } from '../lib/graphql/graphql';
 
-const PageContainer = ({ webRadios }: { webRadios: WebRadio[] }) => {
+type PageContainerProps = { webRadios: WebRadio[] };
+
+const PageContainer = ({ webRadios }: PageContainerProps) => {
   const [currentRadio, setCurrentRadio] = useState<WebRadio | undefined>(
     webRadios[1]
   );
@@ -31,6 +33,7 @@ const PageContainer = ({ webRadios }: { webRadios: WebRadio[] }) => {
       webRadios?.find((radio) => radio?.title === e.target.value)
     );
   };
+
   return (
     <ApolloWrapper>
       <NextUIProvider>
@@ -60,7 +63,6 @@ const PageContainer = ({ webRadios }: { webRadios: WebRadio[] }) => {
             webRadioId={currentRadio?.id as StationsEnum}
           />
         </div>
-
         <Modal
           backdrop="blur"
           isOpen={isOpen}

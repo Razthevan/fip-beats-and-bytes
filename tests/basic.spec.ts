@@ -9,5 +9,6 @@ test('It tests the basic functionality', async ({ page }) => {
   await page.getByLabel('FIP Groove', { exact: true }).click();
   await expect(page.getByLabel('FIP Groove,').locator('span')).toContainText('FIP Groove,');
   await page.getByText('Software Engineer').click();
-  await expect(page.getByText('Sharing my current FIP Radio')).toContainText('groove and a bit about myself.')
+  await expect(page.getByText('Sharing my current FIP Radio')).toContainText('groove and a bit about myself.');
+  // Note: I know this test does not do a lot. Testing Playwright, bear with me 😬. 
 });

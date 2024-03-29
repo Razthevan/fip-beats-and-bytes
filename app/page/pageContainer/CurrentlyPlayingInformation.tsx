@@ -19,9 +19,10 @@ const query = graphql(/* GraphQL */ `
     }
   }
 `);
+
 type CurrentlyPlayingInformationProps = {
-  playerUrl?: string | null;
   webRadioId: StationsEnum;
+  playerUrl?: string | null;
 };
 
 const CurrentlyPlayingInformation = ({

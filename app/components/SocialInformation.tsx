@@ -1,9 +1,16 @@
+'use client';
 import { Link } from '@nextui-org/react';
 
-const SocialInformation = () => {
+const SocialInformation = ({ fallbackMode }: { fallbackMode?: boolean }) => {
   return (
     <div className="text-lg font-light">
-      <p>Sharing my current FIP Radio groove and a bit about myself.</p>
+      <p>
+        Sharing{' '}
+        <span className={fallbackMode ? 'line-through' : ''}>
+          my current FIP Radio groove and{' '}
+        </span>{' '}
+        a bit about myself.
+      </p>
       <p>
         I am a software engineer who loves taking projects from idea to launch,
         and building strong teams along the way.

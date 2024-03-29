@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { Button, Spacer } from '@nextui-org/react';
+import { Snippet } from '@nextui-org/react';
 
 import { graphql } from '@/app/lib/graphql';
 import { StationsEnum } from '@/app/lib/graphql/graphql';
@@ -41,20 +41,7 @@ const CurrentlyPlayingInformation = ({
   return (
     <div>
       <iframe src={playerUrl} className="w-full rounded" />
-      <Button
-        size="lg"
-        fullWidth
-        variant="ghost"
-        className="mt-10 bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
-        onPress={() => {
-          navigator.clipboard.writeText(
-            `${songInformation?.track?.mainArtists} ${songInformation?.track?.title}`
-          );
-        }}
-        disabled={!songInformation?.track?.mainArtists}
-      >
-        Copy song information
-      </Button>
+      <Snippet>{`${songInformation?.track?.mainArtists} ${songInformation?.track?.title}`}</Snippet>
     </div>
   );
 };

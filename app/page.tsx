@@ -1,7 +1,8 @@
 import PageContainer from './page/PageContainer';
+import FallbackScreen from './page/pageContainer/FallbackScreen';
 
-import getClient from './lib/apolloClient';
 import { graphql } from './lib/graphql';
+import getClient from './lib/apolloClient';
 import { WebRadio } from './lib/graphql/graphql';
 
 const query = graphql(/* GraphQL */ `
@@ -25,16 +26,15 @@ const query = graphql(/* GraphQL */ `
 `);
 
 const Home = async () => {
-  const { data } = await getClient().query({ query });
+  const { data, error } = await getClient().query({ query });
+  if (error) {
+    return <FallbackScreen />;
+  }
   const webRadios = data.brand?.webRadios;
   if (!webRadios) {
     return null;
   }
-  return (
-    <main className="flex min-h-screen flex-col items-center py-24 lg:px-80 px-10 bg-neutral-800 text-white dark">
-      <PageContainer webRadios={webRadios as WebRadio[]} />
-    </main>
-  );
+  return <PageContainer webRadios={webRadios as WebRadio[]} />;
 };
 
 export default Home;

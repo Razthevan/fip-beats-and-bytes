@@ -37,11 +37,20 @@ const CurrentlyPlayingInformation = ({
   }
 
   const songInformation = data?.live?.song;
+  const songTitleAndArtists = songInformation?.track
+    ? `${songInformation?.track?.mainArtists} ${songInformation?.track?.title}`
+    : false;
+  null;
+  console.log('songTitleAndArtists: ', songTitleAndArtists);
 
   return (
     <div>
       <iframe src={playerUrl} className="w-full rounded" />
-      <Snippet>{`${songInformation?.track?.mainArtists} ${songInformation?.track?.title}`}</Snippet>
+      <div className="pt-5">
+        <Snippet variant="flat" disableCopy={!songTitleAndArtists} size="lg">
+          {songTitleAndArtists}
+        </Snippet>
+      </div>
     </div>
   );
 };

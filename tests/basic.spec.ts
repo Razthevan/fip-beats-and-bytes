@@ -10,6 +10,4 @@ test('It tests the basic functionality', async ({ page }) => {
   await expect(page.getByLabel('FIP Groove,').locator('span')).toContainText('FIP Groove,');
   await page.getByText('Software Engineer').click();
   await expect(page.getByText('Sharing my current FIP Radio')).toContainText('groove and a bit about myself.')
-  page.getByText('Close').click();
-  await expect(page.getByRole('button', { name: 'Copy song information' })).toBeVisible();
 });

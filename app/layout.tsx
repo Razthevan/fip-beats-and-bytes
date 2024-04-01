@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Libre_Franklin } from 'next/font/google';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 import './globals.css';
 
 const libre = Libre_Franklin({
@@ -24,6 +26,7 @@ const RootLayout = ({
       <body className={libre.className}>
         <main className="flex min-h-screen flex-col items-center py-24 lg:px-80 px-10 bg-neutral-800 text-white dark">
           {children}
+          <SpeedInsights />
         </main>
       </body>
     </html>

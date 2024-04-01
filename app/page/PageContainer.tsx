@@ -37,7 +37,7 @@ const PageContainer = ({ webRadios }: PageContainerProps) => {
   return (
     <ApolloWrapper>
       <NextUIProvider>
-        <div className="mb-6 w-96">
+        <div className="mb-6 w-96 touch-none">
           <h1 className="font-bold text-5xl cursor-default">
             What&apos;s playing?
           </h1>

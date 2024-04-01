@@ -6,7 +6,7 @@ const UserInformation = () => {
       name="Razvan Mirleneanu"
       description="Software Engineer"
       avatarProps={{
-        size: 'lg',
+        size: 'md',
         name: 'RM',
         isBordered: true,
         showFallback: true,

@@ -1,4 +1,5 @@
 'use client';
+import classNames from 'classnames';
 import { Link } from '@nextui-org/react';
 
 type SocialInformationProps = {
@@ -10,7 +11,7 @@ const SocialInformation = ({ fallbackMode }: SocialInformationProps) => {
     <div className="text-lg font-light">
       <p>
         Sharing{' '}
-        <span className={fallbackMode ? 'line-through' : ''}>
+        <span className={classNames({ 'line-through': fallbackMode })}>
           my current FIP Radio groove and{' '}
         </span>{' '}
         a bit about myself.

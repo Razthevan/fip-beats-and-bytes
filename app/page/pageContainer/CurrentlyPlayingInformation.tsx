@@ -77,7 +77,7 @@ const CurrentlyPlayingInformation = ({
           size="lg"
           variant="flat"
           className="w-full"
-          classNames={{ pre: 'text-pretty	break-words' }}
+          classNames={{ pre: 'text-pretty	break-words break-all' }}
           disableCopy={!songTitleAndArtists}
         >
           {songTitleAndArtists}

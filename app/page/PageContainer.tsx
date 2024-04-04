@@ -38,7 +38,7 @@ const PageContainer = ({ webRadios }: PageContainerProps) => {
     <ApolloWrapper>
       <NextUIProvider>
         <div className="mb-6 w-96 touch-none">
-          <h1 className="font-bold text-5xl cursor-default">
+          <h1 className="animate-linear mb-18 bg-gradient-to-r from-dark via-pink-500 to-dark bg-[length:200%_auto] bg-clip-text text-6xl font-bold text-transparent cursor-default">
             What&apos;s playing?
           </h1>
         </div>
@@ -46,6 +46,7 @@ const PageContainer = ({ webRadios }: PageContainerProps) => {
           size="lg"
           radius="sm"
           fullWidth={false}
+          disallowEmptySelection
           label="Select radio station"
           onChange={handleSelectionChange}
           selectedKeys={[currentRadio?.title as string]}

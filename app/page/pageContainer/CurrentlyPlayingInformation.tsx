@@ -1,7 +1,7 @@
-import { useRef, useState, useCallback, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import classNames from 'classnames';
-import { Button, Snippet } from '@nextui-org/react';
 import { NetworkStatus, useQuery } from '@apollo/client';
+import { Button, Tooltip, Snippet } from '@nextui-org/react';
 
 import { graphql } from '@/app/lib/graphql';
 import { StationsEnum } from '@/app/lib/graphql/graphql';
@@ -83,28 +83,53 @@ const CurrentlyPlayingInformation = ({
           {songTitleAndArtists}
         </Snippet>
       </div>
-      <Button
+      <Tooltip
         size="lg"
-        fullWidth
-        variant="ghost"
-        disabled={isLoading}
-        onClick={() => {
-          refetch().then(() => {
-            setIsOutdated(false);
-            if (iFrameRef.current) {
-              iFrameRef.current.src = playerUrl as string;
-            }
-          });
+        closeDelay={0}
+        placement="top-start"
+        isOpen={!!isOutdated}
+        content="Song information is outdated, Press me"
+        classNames={{ content: 'bg-neutral-800 text-warning font-bold' }}
+        motionProps={{
+          variants: {
+            exit: {
+              opacity: 0,
+              transition: {
+                duration: 0.1,
+                ease: 'easeIn',
+              },
+            },
+            enter: {
+              opacity: 1,
+              transition: {
+                duration: 0.15,
+                ease: 'easeOut',
+              },
+            },
+          },
         }}
-        className={classNames(
-          'mt-10 bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg',
-          {
-            'animate-pulse': isOutdated,
-          }
-        )}
       >
-        Update
-      </Button>
+        <Button
+          size="lg"
+          fullWidth
+          variant="ghost"
+          disabled={isLoading}
+          onClick={() => {
+            refetch().then(() => {
+              setIsOutdated(false);
+              if (iFrameRef.current) {
+                iFrameRef.current.src = playerUrl as string;
+              }
+            });
+          }}
+          className={classNames('mt-10 text-white shadow-lg', {
+            'animate-linear mb-20 bg-gradient-to-r from-dark via-pink-500 to-dark bg-[length:200%_auto]':
+              isOutdated,
+          })}
+        >
+          Update
+        </Button>
+      </Tooltip>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Libre_Franklin } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -15,6 +15,14 @@ const libre = Libre_Franklin({
 export const metadata: Metadata = {
   title: 'FIP bits and bytes',
   description: 'Sharing my current FIP Radio groove and a bit about myself',
+};
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  width: 'device-width',
+  height: 'device-height',
 };
 
 const RootLayout = ({

@@ -37,8 +37,9 @@ const CurrentlyPlayingInformation = ({
   const [isPlayerPlaying, setIsPlayerPlaying] = useState<Boolean>(false);
 
   const { data, loading, networkStatus, refetch } = useQuery(query, {
-    variables: { station: webRadioId },
     skip: !playerUrl || !webRadioId,
+    notifyOnNetworkStatusChange: true,
+    variables: { station: webRadioId },
   });
 
   const song = data?.live?.song;

@@ -4,6 +4,7 @@ import { NetworkStatus, useQuery } from '@apollo/client';
 import { Button, Tooltip, Snippet } from '@nextui-org/react';
 
 import { graphql } from '@/app/lib/graphql';
+import { TRACKED_EVENTS } from '@/app/lib/constants';
 import { StationsEnum } from '@/app/lib/graphql/graphql';
 import { useInterval } from '@/app/lib/hooks/useInterval';
 
@@ -33,6 +34,7 @@ const CurrentlyPlayingInformation = ({
 }: CurrentlyPlayingInformationProps) => {
   const iFrameRef = useRef<HTMLIFrameElement>(null);
   const [isOutdated, setIsOutdated] = useState<Boolean>(false);
+  const [isPlayerPlaying, setIsPlayerPlaying] = useState<Boolean>(false);
 
   const { data, loading, networkStatus, refetch } = useQuery(query, {
     variables: { station: webRadioId },
@@ -57,9 +59,25 @@ const CurrentlyPlayingInformation = ({
     !isOutdated ? 1000 : null
   );
   useEffect(() => {
-    // If the user changes the player, reset the outdated status
+    // If the user changes the player, reset the outdated & playing status
     setIsOutdated(false);
+    setIsPlayerPlaying(false);
   }, [playerUrl]);
+
+  useEffect(() => {
+    const handler = (e: MessageEvent<{ name: string }>) => {
+      if (!TRACKED_EVENTS.includes(e.data.name)) {
+        return;
+      }
+
+      const [PAUSE_EVENT] = TRACKED_EVENTS;
+      setIsPlayerPlaying(e.data.name === PAUSE_EVENT ? false : true);
+    };
+
+    window.addEventListener('message', handler);
+
+    return () => window.removeEventListener('message', handler);
+  }, []);
 
   if (!playerUrl || !webRadioId) {
     return null;
@@ -117,7 +135,7 @@ const CurrentlyPlayingInformation = ({
           onClick={() => {
             refetch().then(() => {
               setIsOutdated(false);
-              if (iFrameRef.current) {
+              if (iFrameRef.current && !isPlayerPlaying) {
                 iFrameRef.current.src = playerUrl as string;
               }
             });

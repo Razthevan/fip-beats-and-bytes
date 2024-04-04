@@ -21,3 +21,5 @@ export const WEB_RADIO_COLORS: WebRadioColorsInterface = {
   FIP_ELECTRO: '#00D3FF',
   FIP_NOUVEAUTES: '#357ded',
 };
+
+export const TRACKED_EVENTS = ['STATE_STOPPED', 'STATE_PLAY']

@@ -76,8 +76,8 @@ const CurrentlyPlayingInformation = ({
         <Snippet
           size="lg"
           variant="flat"
-          className="w-full "
-          classNames={{ pre: 'text-wrap' }}
+          className="w-full"
+          classNames={{ pre: 'text-pretty	break-words' }}
           disableCopy={!songTitleAndArtists}
         >
           {songTitleAndArtists}
@@ -88,7 +88,7 @@ const CurrentlyPlayingInformation = ({
         closeDelay={0}
         placement="top-start"
         isOpen={!!isOutdated}
-        content="Song information is outdated, Press me"
+        content="Outdated info! Give me a click!"
         classNames={{ content: 'bg-neutral-800 text-warning font-bold' }}
         motionProps={{
           variants: {

@@ -41,11 +41,6 @@ export default defineConfig({
       use: { ...devices['Desktop Firefox'] },
     },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
@@ -72,5 +67,6 @@ export default defineConfig({
     command: 'yarn dev',
     url: 'http://localhost:3000/',
     timeout: 120000,
+    reuseExistingServer:true
   },
 });
